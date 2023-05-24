@@ -1,0 +1,24 @@
+.main-form {
+    padding: 1rem;
+    background-color: rgb(215, 211, 211);
+    margin: 2rem auto;
+    width: 40rem;
+    max-width: 95%;
+    text-align: left;
+  }
+  
+  #filtererror{
+    color: red;
+  }
+label{
+    margin: 0.5em;
+}
+label, input{
+    display: block;
+    
+}
+
+input{
+    width: 100%;
+    height: 2em;
+}

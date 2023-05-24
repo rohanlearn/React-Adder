@@ -1,0 +1,9 @@
+.entry{
+    margin: 1.5em;
+    width: 90%;
+    border: 2px solid black;
+}
+p{
+    margin: 1em;
+    font-weight: 600;
+}
