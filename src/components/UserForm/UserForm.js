@@ -1,27 +1,36 @@
 import "./UserForm.css"
 import Button from "./Button"
 import Card from "../UI/Card"
+import { useState } from "react"
 
 const UserForm = props => {
+    const [userName,updateUser] = useState("")
+    const [Age,updateAge] = useState("")
+    const [collegeName,updateclgName] = useState("")
    
 
-    let userName = ""
-   let Age = 0
+    
     const getUname= (e) =>{
         e.preventDefault()
-        userName=e.target.value
+        updateUser(e.target.value)
 
     }
     const getAge= (e) =>{
         e.preventDefault()
-        Age=e.target.value
+        updateAge(e.target.value)
+        
+
+    }
+    const getCollegeName= (e) =>{
+        e.preventDefault()
+        updateclgName(e.target.value)
         
 
     }
 
     const getData = (e) => {
         e.preventDefault()
-        if(userName===""||Age===""){
+        if(userName===""||Age===""|| collegeName===""){
             props.sendConfirm({state:false,message:"Please enter a valid name and age (non-empty values)."})
             return
         }
@@ -30,9 +39,10 @@ const UserForm = props => {
             
             return
         }
-        props.getData({uname:userName, age:parseInt(Age)});
-        userName = ""
-        Age = 0
+        props.getData({uname:userName, age:parseInt(Age),clgName:collegeName});
+        updateUser("")
+        updateAge("")
+        updateclgName("")
         document.querySelectorAll("input").forEach((e)=>{
             e.value=""
         })
@@ -44,9 +54,11 @@ const UserForm = props => {
             <Card className="main-form">
                 <form onSubmit={getData} >
                 <label type="text">Username</label>
-                <input type="text" onChange={getUname}></input>
+                <input type="text" value={userName} onChange={getUname}></input>
                 <label>Age(Years)</label>
-                <input type="number" onChange={getAge}></input>
+                <input type="number" value={Age} onChange={getAge}></input>
+                <label>College Name</label>
+                <input type="text" value={collegeName} onChange={getCollegeName}></input>
                 <Button>Add User</Button>
                 </form>
             </Card>
